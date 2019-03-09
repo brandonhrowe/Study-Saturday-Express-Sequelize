@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require("sequelize");
+const db = require("../db");
 
 const Student = db.define("student", {
   firstName: {
@@ -12,7 +12,7 @@ const Student = db.define("student", {
     type: Sequelize.STRING,
     allowNull: false
   },
-    email: {
+  email: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
@@ -22,9 +22,10 @@ const Student = db.define("student", {
 });
 
 Student.beforeValidate(student => {
-  student.firstName = student.firstName.slice(0,1).toUpperCase() + student.firstName.slice(1);
-  student.lastName = student.lastName.slice(0,1).toUpperCase() + student.lastName.slice(1);
-
-})
+  student.firstName =
+    student.firstName.slice(0, 1).toUpperCase() + student.firstName.slice(1);
+  student.lastName =
+    student.lastName.slice(0, 1).toUpperCase() + student.lastName.slice(1);
+});
 
 module.exports = Student;
